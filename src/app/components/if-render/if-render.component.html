@@ -1,0 +1,9 @@
+<div class="class">
+    <div *ngIf="canShow">Estamos mostrando isso porque foi permitido</div> <!--Estrutura condicional simples-->
+    <h2 *ngIf="name === 'Yuri'; else nameNotFound">O nome é Yuri</h2> <!--Estrutura condicional composta-->
+    <ng-template #nameNotFound> <!--Será exibido se o *ngIf for falso-->
+        <div>
+            <h2>O nome não foi encontrado!</h2>
+        </div>
+    </ng-template>
+</div>
