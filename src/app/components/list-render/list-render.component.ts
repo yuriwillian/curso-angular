@@ -21,8 +21,8 @@ export class ListRenderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showAge(animal: Animal): void { //(estudar) A função tem ": void" por que ela não retorna nada.
-    this.animalDetails = this.listService.showAge(this.animals, animal) // exercicio feito solo
+  showAge(animal: Animal): void { //A função tem ": void" por que ela não retorna nada.
+    this.animalDetails = this.listService.showAge(this.animals, animal)
   }
 
   removeAnimal(animal: Animal){
@@ -31,7 +31,7 @@ export class ListRenderComponent implements OnInit {
   }
 
   getAnimals(): void {
-    this.listService.getAll()
+    this.listService.getAll().subscribe((animals) => (this.animals = animals)) //estudar mais
   }
 
 }

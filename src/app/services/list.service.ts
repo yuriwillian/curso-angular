@@ -2,12 +2,17 @@ import { Injectable } from '@angular/core';
 
 import { Animal } from '../Animal';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+
+import { Observable } from 'rxjs';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class ListService {
-
-  constructor() { }
+  private apiUrl = 'http://localhost:3000/animals' // não tenho a api :(
+  constructor(private http: HttpClient) { }
 
 
   remove(animals: Animal[], animal: Animal) {
@@ -18,7 +23,7 @@ export class ListService {
     return `O pet ${animal.name} tem ${animal.age} anos!`
   }
 
-  getAll() {
-
+  getAll(): Observable<Animal[]> {
+    return this.http.get<Animal[]>(this.apiUrl)
   }
 }
